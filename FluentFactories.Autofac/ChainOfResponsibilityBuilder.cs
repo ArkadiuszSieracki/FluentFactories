@@ -7,7 +7,8 @@ namespace FluentFactories.Autofac
 {
     public class ChainOfResponsibilityBuilder<TChain>:Module
     {
-        public string Id { get; set; } =/* Guid.NewGuid().ToString();*/ string.Empty;
+        public string Id { get; set; } = Guid.NewGuid().ToString(); 
+
         private List<Type> ChainOfResponsibilityDef { get;} = new List<Type>();
    
         public ChainOfResponsibilityBuilder<TChain> WithNext<TConcreteChain>() where TConcreteChain:TChain {
