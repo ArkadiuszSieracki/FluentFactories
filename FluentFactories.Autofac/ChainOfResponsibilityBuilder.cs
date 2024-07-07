@@ -26,36 +26,21 @@ namespace FluentFactories.Autofac
             object current = default(TChain);
             foreach (var item in def)
             {
-                builder.RegisterType(item);
+                builder.RegisterType(item).Named(Id+index++,item);
                 
             }
             _ = builder.Register((ctx) =>
             {
-               
+                index = 0;
                 foreach (var item in def)
                 {
-                    current = ctx.Resolve(item, new TypedParameter(typeof(TChain), current));
+                    current = ctx.ResolveNamed(Id + index++,item, new TypedParameter(typeof(TChain), current));
                 }
                 
                 return current;
 
             }).As<TChain>();
-            //for ( ; index < def.Count; index++)
-            //{
-            //    builder.RegisterType(def[index]).Named(Id + index, def[index]);
-            //    int indexC = index;
-            //    _ = builder.Register((ctx) =>
-            //    {
-            //        var ctbr = def[indexC - 1];
-            //        current = ctx.ResolveNamed(Id + (indexC-1).ToString(), ctbr, new TypedParameter(typeof(TChain), current));
-            //        return current;
-            //    }).Named<TChain>(Id + index);
-            //}
-            //builder.Register((ctx) =>
-            //{
-            //    TChain item = ctx.ResolveNamed<TChain>(Id + (index - 1).ToString());
-            //    return item;
-            //}).As<TChain>();
+   
 
         }
     }
