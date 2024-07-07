@@ -29,7 +29,10 @@ namespace FluentFactories.Autofac.Tests.StepDefinitions
         {
             ContainerBuilder container = new ContainerBuilder();
 
-            container.RegisterTransientChain<ISentenceEnricher>().WithNext<HelloEnricher>().WithNext<SpaceEnricher>().WithNext<WorldEnricher>().WithNext<ExclaimEnricher>();
+            container.RegisterTransientChain<ISentenceEnricher>()
+                .WithNext<HelloEnricher>()
+                .WithNext<SpaceEnricher>()
+                .WithNext<WorldEnricher>().WithNext<ExclaimEnricher>();
             var c= container.Build();
             sentenceEnricher = c.Resolve<ISentenceEnricher>();
         }
