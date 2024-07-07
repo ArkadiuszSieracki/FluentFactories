@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+	  <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+	  <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <DebugType>embedded</DebugType>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	  <Title>Target for the packae is to provide robust IOC factories for autofac containers</Title>
+	  <Authors>arkadiuszsieracki</Authors>
+	  <Description>Target for the packae is to provide robust IOC factories for autofac containers</Description>
+	  <PackageProjectUrl>https://github.com/ArkadiuszSieracki/FluentFactories</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/ArkadiuszSieracki/FluentFactories</RepositoryUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageReleaseNotes>Init version with Chain of responsibility factory</PackageReleaseNotes>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
