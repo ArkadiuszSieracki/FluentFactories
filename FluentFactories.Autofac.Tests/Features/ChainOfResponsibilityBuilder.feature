@@ -10,3 +10,9 @@ Scenario: Building automatically Hello World enricher
     Given Hallo world enricher with Autofac
 	When Executing enrich method
 	Then the result should be "Hello World!"
+
+Scenario: Building automatically Hello World enricher accepts scope modifiers
+    Given Hallo world enricher with Autofac and custom lifetime scopes
+	When Executing enrich method
+	Then the result should be "Hello World!"
+	And Scope of registerations should be respected
