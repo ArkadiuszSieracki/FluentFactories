@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
 	  <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
-
+	  <LangVersion>latest</LangVersion>
 	  <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
 	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

@@ -9,5 +9,12 @@ namespace FluentFactories.Autofac
             container.RegisterModule(module);
             return module;
         }
+
+        public static Flyweight<TFlyweight> RegisterFlyWeight<TFlyweight>(this global::Autofac.ContainerBuilder container)
+        {
+            var module = new Flyweight<TFlyweight>();
+            container.RegisterModule(module);
+            return module;
+        }
     }
 }
