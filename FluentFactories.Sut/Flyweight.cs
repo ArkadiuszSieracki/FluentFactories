@@ -72,7 +72,13 @@ public class Rectangle : IShape,IEquatable<Rectangle>
     }
 }
 
-public class BrushFactory { }
+public class BrushFactory {
+    public static int count;
+    public BrushFactory()
+    {
+        count++;
+    }
+}
 
 // Flyweight Factory class
 public class ShapeFactory

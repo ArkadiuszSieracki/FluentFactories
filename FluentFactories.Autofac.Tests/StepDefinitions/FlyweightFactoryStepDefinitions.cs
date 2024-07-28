@@ -1,5 +1,6 @@
 using Autofac;
 using System;
+using System.IO;
 using TechTalk.SpecFlow;
 
 namespace FluentFactories.Autofac.Tests.StepDefinitions
@@ -12,7 +13,7 @@ namespace FluentFactories.Autofac.Tests.StepDefinitions
         public void GivenContainerBuilder()
         {
             _containerBuilder = new ContainerBuilder();
-            _containerBuilder.RegisterType<BrushFactory>().SingleInstance();
+            //_containerBuilder.RegisterType<BrushFactory>().SingleInstance();
         }
         [When(@"registering Flyweight circle with shared resources")]
         public void WhenRegisteringFlyweightCircleWithSharedResources()
@@ -62,6 +63,31 @@ namespace FluentFactories.Autofac.Tests.StepDefinitions
                 rect.SetA(100);
                 rect.Draw();
             }
+        }
+
+        [Then(@"It is possible to share some parts of the objects")]
+        public void ThenItIsPossibleToShareSomePartsOfTheObjects()
+        {
+            BrushFactory.count = 0;
+            IContainer container = _containerBuilder.Build();
+            var circleFactory=    container.Resolve<IFlyWeightFactory<Circle>>();
+            Dictionary < Color, Circle> cc = new Dictionary<Color, Circle>();
+  
+            for (int i = 0; i < 20; ++i)
+            {
+                Color c = GetRandomColor();
+                Circle circle = circleFactory.Get(c);
+                if (cc.ContainsKey(c) == false)
+                {
+                    cc.Add(c, circle);
+                }
+                circle.Equals(cc[c]).Should().BeTrue();
+                circle.SetX(GetRandomX());
+                circle.SetY(GetRandomY());
+                circle.SetRadius(100);
+                circle.Draw();
+            }
+            BrushFactory.count.Should().Be(cc.Count);
         }
 
         private static Color GetRandomColor()
