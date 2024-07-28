@@ -12,16 +12,7 @@ namespace FluentFactories.Autofac
     {
         private ResgisterKind targetRegisterKind;
 
-        class Registeration
-        {
-            public Registeration(Type type, ResgisterKind registerKind)
-            {
-                Type = type;
-            }
-
-            public Type Type { get; set; }
-            public ResgisterKind ResgisterKind { get; set; }
-        }
+      
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         private List<Registeration> ChainOfResponsibilityDef { get; } = new List<Registeration>();
@@ -118,5 +109,16 @@ namespace FluentFactories.Autofac
         InstancePerDependency,
         InstancePerLifetimeScope,
         SingleInstance
+    }
+
+    class Registeration
+    {
+        public Registeration(Type type, ResgisterKind registerKind)
+        {
+            Type = type;
+        }
+
+        public Type Type { get; set; }
+        public ResgisterKind ResgisterKind { get; set; }
     }
 }
