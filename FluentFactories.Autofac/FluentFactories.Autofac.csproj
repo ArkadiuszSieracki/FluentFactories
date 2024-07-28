@@ -19,10 +19,12 @@
 	  <RepositoryUrl>https://github.com/ArkadiuszSieracki/FluentFactories</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageReleaseNotes>1.0 Init version
-2.0 Added lifetime scopes support</PackageReleaseNotes>
+2.0 Added lifetime scopes support
+2.1 Added flyweight factory implementation for autofac
+	  </PackageReleaseNotes>
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	  <Version>2.0.0</Version>
+	  <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
