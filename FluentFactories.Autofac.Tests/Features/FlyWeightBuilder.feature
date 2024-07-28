@@ -10,3 +10,8 @@ Scenario: When building flyweight it is posible to share objects between flyweig
 	Given Container builder
 	When registering Flyweight circle with shared resources
 	Then It is possible to share some parts of the objects
+
+Scenario: When building flyweight it is share objects are shared between prerequisites of flyweigth
+	Given Container builder
+	When registering Flyweight circle with shared resources
+	Then It is possible to share some parts of the objects

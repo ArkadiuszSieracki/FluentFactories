@@ -18,6 +18,7 @@ namespace FluentFactories.Autofac.Tests.StepDefinitions
         [When(@"registering Flyweight circle with shared resources")]
         public void WhenRegisteringFlyweightCircleWithSharedResources()
         {
+            _containerBuilder.RegisterType<BorderFactory>();
             _containerBuilder.RegisterFlyWeight<Circle>().WithShared<BrushFactory>();
         }
 

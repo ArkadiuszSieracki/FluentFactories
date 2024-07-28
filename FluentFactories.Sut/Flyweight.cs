@@ -18,7 +18,7 @@ public class Circle : IShape, IEquatable<Circle>
     private int y;
     private int radius;
 
-    public Circle(Color color, BrushFactory ctx)
+    public Circle(Color color, BrushFactory ctx, BorderFactory bf)
     {
         this.color = color;
         this.ctx = ctx;
@@ -80,6 +80,7 @@ public class BrushFactory {
     }
 }
 
+
 // Flyweight Factory class
 public class ShapeFactory
 {
@@ -94,14 +95,22 @@ public class ShapeFactory
         }
         else
         {
-            circle = new Circle(color,ctx );
+            circle = new Circle(color,ctx, new BorderFactory(ctx) );
             circleMap[color] = circle;
             Console.WriteLine($"Creating circle of color : {color}");
         }
         return circle;
     }
 }
+public class BorderFactory
+{
+    public BorderFactory(BrushFactory brushFactory)
+    {
+        BrushFactory = brushFactory;
+    }
 
+    public BrushFactory BrushFactory { get; }
+}
 // Client code
 class Program
 {
